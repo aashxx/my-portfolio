@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './styles/app.scss'
+import { Toaster } from 'react-hot-toast';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Work from './components/Work';
+import Timeline from './components/Timeline';
+import Services from './components/Services';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import NavbarResponsive from './components/NavbarResponsive';
+import Skills from './components/Skills';
 
-function App() {
+const App = () => {
+
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <NavbarResponsive openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <Navbar openMenu={openMenu} setOpenMenu={setOpenMenu} />
+      <Home />
+      <Work />
+      <Timeline />
+      <Services />
+      <Skills />
+      <Contact />
+      <Footer />
+      <Toaster />
+    </>
+  )
 }
 
 export default App;
+
