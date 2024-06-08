@@ -33,7 +33,7 @@ const Contact = () => {
           <div className="lg:w-[54%] order-2 lg:order-none">
             <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
               <h3 className="text-4xl text-accent">
-                Let's work together
+                Let&apos;s work together
               </h3>
               <p className="text-white/60">
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente, dignissimos!
