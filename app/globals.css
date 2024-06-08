@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+  
+@layer base {
+  body {
+    @apply font-primary bg-white dark:bg-primary text-primary dark:text-white leading-loose;
+  }
+
+  .h1 {
+    @apply text-[48px] lg:text-[90px] leading-[1.1] font-semibold;
+  }
+
+  .h2 {
+    @apply text-[36px] lg:text-[38px] leading-[1.1] font-semibold;
+  }
+
+  .h3 {
+    @apply text-[20px] lg:text-[24px] leading-[1.1] font-semibold;
+  }
+
+  .gradient-heading {
+    background-image: linear-gradient(
+      43deg,
+      #02e29e 0%,
+      #36b7fe 26%,
+      #ffcc70 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bolder;
+  }
+
+  .text-outline-dark {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+
+  .text-outline-light {
+    -webkit-text-stroke: 1px #1c1c22;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #36b7fe;
+  }
+}
