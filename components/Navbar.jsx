@@ -17,7 +17,8 @@ const Navbar = () => {
                     <DesktopNav />
                     <ModeToggle />
                 </div>
-                <div className="lg:hidden">
+                <div className="lg:hidden flex items-center gap-4">
+                    <ModeToggle />
                     <MobileNav />
                 </div>
             </div>

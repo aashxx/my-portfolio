@@ -8,7 +8,7 @@
   }
 
   .h1 {
-    @apply text-[48px] lg:text-[90px] leading-[1.1] font-semibold;
+    @apply text-[68px] lg:text-[90px] leading-[1.1] font-semibold;
   }
 
   .h2 {
@@ -42,5 +42,9 @@
 
   .text-outline-hover {
     -webkit-text-stroke: 1px #36b7fe;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0;
   }
 }
