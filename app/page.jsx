@@ -233,8 +233,8 @@ const Home = () => {
                 </p>
                 <ul className='flex items-center gap-4'>
                   {
-                    project.stack.map((item, index) => (
-                      <li key={index} className='text-xl text-accent'>
+                    project.stack.map((item) => (
+                      <li className='text-xl text-accent'>
                         {item}
                       </li>
                     ))
