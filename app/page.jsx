@@ -350,7 +350,7 @@ const Home = () => {
                     <SwiperSlide key={index} className='w-full'>
                       <div className='lg:h-[300px] h-[250px] relative group flex justify-center items-center rounded-md bg-pink-50/20'>
                         <div className='relative w-full h-full rounded-md border dark:border-none'>
-                          <img src={project.image} className='object-contain rounded-md' alt='image' />
+                          <img src={project.image} className='w-full h-full rounded-md' alt='image' />
                         </div>
                       </div>
                     </SwiperSlide>
