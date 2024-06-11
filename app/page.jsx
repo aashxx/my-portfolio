@@ -26,6 +26,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { BackgroundBeams } from '@/components/ui/background-beams';
+import CipherAnimation from '@/components/CipherAnimation';
 
 const Home = () => {
 
@@ -106,9 +107,7 @@ const Home = () => {
               <h3 className='lg:text-2xl text-md'>
                 Hello Everyone 👋
               </h3>
-              <h1 className='gradient-heading h1'>
-                Mohamed Aashir
-              </h1>
+              <CipherAnimation name={'Mohamed Aashir'} />
               <span className='lg:text-xl text-[10px] text-[gray]'>
                 Software Engineer | Student | Fullstack Developer
               </span>
