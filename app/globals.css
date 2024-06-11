@@ -20,16 +20,21 @@
   }
 
   .gradient-heading {
-    background-image: linear-gradient(
+    background: linear-gradient(
       43deg,
-      #02e29e 0%,
-      #36b7fe 26%,
-      #ffcc70 100%
+      #0079c2,
+      #36b7fe,
+      #82c7ff,
+      #ff9933,
+      #36feab 
     );
+    background-size: 400% 400%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    -webkit-text-fill-color: transparent;
     font-weight: bolder;
+    animation: gradient 5s linear infinite;
   }
 
   .text-outline-dark {
@@ -50,5 +55,28 @@
 
   *{
     scroll-behavior: smooth;
+    cursor: none;
+  }
+
+  body {
+    cursor: none;
+  }
+
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 25% 25%;
+    }
+    50% {
+      background-position: 50% 50%;
+    }
+    75% {
+      background-position: 75% 75%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 }

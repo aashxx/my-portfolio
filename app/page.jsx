@@ -25,6 +25,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 
 const Home = () => {
 
@@ -41,7 +42,7 @@ const Home = () => {
     }),
     email: z.string().describe('Email').email({ message: "Invalid Email" }),
     phone: z.string().min(6, {
-      message: "Phone number must be of atleast 6 characters.",
+      message: "Invalid Phone number",
     }),
     service: z.string().min(1, {
       message: "Service is required",
@@ -75,6 +76,7 @@ const Home = () => {
           email: values.email,
           phone: values.phone,
           service: values.service,
+
           message: values.message
       })
     });
@@ -98,7 +100,7 @@ const Home = () => {
   return (
     <main>
       <section id='home' className='h-full'>
-        <section className="container mx-auto h-full">
+        <section className="container mx-auto h-full z-20">
           <div className='flex flex-col-reverse lg:flex-row items-center justify-between lg:pt-8'>
             <article className='text-center w-full flex flex-col gap-4 items-center pt-4 lg:pt-[unset]'>
               <h3 className='lg:text-2xl text-md'>
@@ -114,16 +116,17 @@ const Home = () => {
                 Developer with a strong passion for creating innovative and user-friendly applications. Actively seeking opportunities to apply my skills in a professional setting.
               </p>
               <div className='flex flex-col items-center gap-8 w-full'>
-                <a href="https://drive.google.com/uc?export=download&id=1aKTMKKUu9dFFjT6Mfxub2pJAKXMc5XxZ" download="aashir-cv.pdf">
-                  <Button variant="outline" size="lg" className="uppercase flex items-center gap-2">
+                <a href="https://drive.google.com/uc?export=download&id=1aKTMKKUu9dFFjT6Mfxub2pJAKXMc5XxZ" download="aashir-cv.pdf" className="relative z-50 inline-flex items-center justify-center px-10 py-3 overflow-hidden font-bold rounded-full group border border-accent bg-transparent text-accent dark:hover:text-primary hover:text-white">
+                  <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-accent rounded-full group-hover:w-56 group-hover:h-56"></span>
+                  <span className="relative uppercase flex items-center gap-2">
                     <span>
-                      Download CV
+                      Download CV 
                     </span>
                     <FiDownload className='text-xl' />
-                  </Button>
+                  </span>
                 </a>
-                <aside className='mb-8 lg:mb-0'>
-                  <Socials containerStyles={'flex gap-6'} iconStyles={'w-9 h-9 border-accent rounded-full flex justify-center border items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500'} />
+                <aside className='mb-8 lg:mb-0 z-50'>
+                  <Socials containerStyles={'flex gap-6 z-50'} iconStyles={'w-9 h-9 border-accent rounded-full flex justify-center border items-center text-accent text-base hover:bg-accent hover:text-primary hover:transition-all duration-500'} />
                 </aside>
               </div>
             </article>
@@ -132,6 +135,7 @@ const Home = () => {
         <section className='w-full px-12 mt-10 lg:mt-20 mb-28'>
             <Stats />
         </section>
+        <BackgroundBeams className='z-10' />
       </section>
       <section id='about' className="mx-auto flex items-center justify-center lg:first-letter: lg:my-24 lg:py-0 lg:max-w-[80%]">
         <section className="container mx-auto">
@@ -375,9 +379,9 @@ const Home = () => {
                     <div className='text-5xl font-extrabold text-outline-light dark:text-outline-dark text-transparent group-hover:text-outline-hover transition-all duration-500'>
                       {service.num}
                     </div>
-                    <Link href={service.href} className='w-[50px] h-[50px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center group-hover:-rotate-45'>
+                    <a href={service.href} className='w-[50px] h-[50px] rounded-full bg-white group-hover:bg-accent transition-all duration-500 flex justify-center items-center hover:-rotate-45'>
                       <BsArrowDownRight className='text-primary text-3xl' />
-                    </Link>
+                    </a>
                   </div>
                   <h2 className='text-[32px] font-bold leading-none text-primary dark:text-white group-hover:text-accent transition-all duration-500'>
                     {service.title}
@@ -487,9 +491,10 @@ const Home = () => {
                       </FormItem>
                     )}
                   />
-                  <Button size='md' className="max-w-40 self-center mt-5">
-                    Send Message
-                  </Button>
+                  <button className="relative inline-flex items-center justify-start px-5 py-2 overflow-hidden font-medium transition-all bg-accent rounded-full hover:bg-primary group max-w-40 self-center mt-5">
+                    <span className="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-primary rounded-full"></span>
+                    <span className="relative w-full text-left text-md text-primary transition-colors duration-200 ease-in-out group-hover:text-accent">Send Message</span>
+                  </button>
                 </form>
               </Form>
             </div>
