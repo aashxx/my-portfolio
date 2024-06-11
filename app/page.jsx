@@ -234,8 +234,8 @@ const Home = () => {
                 <ul className='flex items-center gap-4'>
                   {
                     project.stack.map((item) => (
-                      <li className='text-xl text-accent'>
-                        {item}
+                      <li key={item.name} className='text-xl text-accent'>
+                        {item.icon}
                       </li>
                     ))
                   }
