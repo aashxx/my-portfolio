@@ -447,8 +447,7 @@ const Home = () => {
                     name="service"
                     render={({ field }) => (
                       <FormItem>
-                        <FormControl>
-                          <Select onValueChange={field.onChange} defaultValue={...field.value}>
+                          <Select onValueChange={field.onChange}>
                             <SelectTrigger className="w-full">
                               <SelectValue placeholder="Select a service" />
                             </SelectTrigger>
@@ -472,7 +471,6 @@ const Home = () => {
                               </SelectGroup>
                             </SelectContent>
                           </Select>
-                        </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
