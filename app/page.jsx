@@ -2,13 +2,12 @@
 
 import Socials from '@/components/Socials';
 import Stats from '@/components/Stats';
-import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 import { FiDownload } from 'react-icons/fi';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { ABOUT, EDUCATION, EXPERIENCE, PROJECTS, SKILLS } from '@/lib/constants';
+import { ABOUT, ANIMATIONS, EDUCATION, EXPERIENCE, PROJECTS, SKILLS } from '@/lib/constants';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { BsArrowUpRight, BsGithub, BsArrowDownRight } from 'react-icons/bs';
@@ -27,6 +26,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import CipherAnimation from '@/components/CipherAnimation';
+import { motion } from 'framer-motion';
 
 const Home = () => {
 
@@ -101,13 +101,16 @@ const Home = () => {
   return (
     <main>
       <section id='home' className='h-full'>
-        <section className="container mx-auto h-full z-20">
+        <motion.section {...ANIMATIONS.open} className="container mx-auto h-full z-20">
           <div className='flex flex-col-reverse lg:flex-row items-center justify-between lg:pt-8'>
             <article className='text-center w-full flex flex-col gap-4 items-center pt-4 lg:pt-[unset]'>
               <h3 className='lg:text-2xl text-md'>
                 Hello Everyone 👋
               </h3>
-              <CipherAnimation name={'Mohamed Aashir'} />
+              <div className='flex flex-col lg:gap-7 gap-1 lg:flex-row'>
+                <CipherAnimation name={'Mohamed'} />
+                <CipherAnimation name={'Aashir'} />
+              </div>
               <span className='lg:text-xl text-[10px] text-[gray]'>
                 Software Engineer | Student | Fullstack Developer
               </span>
@@ -130,13 +133,13 @@ const Home = () => {
               </div>
             </article>
           </div>
-        </section>
+        </motion.section>
         <section className='w-full px-12 mt-10 lg:mt-20 mb-28'>
             <Stats />
         </section>
-        <BackgroundBeams className='z-10' />
+        <BackgroundBeams className='z-10 hidden dark:block' />
       </section>
-      <section id='about' className="mx-auto flex items-center justify-center lg:first-letter: lg:my-24 lg:py-0 lg:max-w-[80%]">
+      <motion.section {...ANIMATIONS.up} id='about' className="mx-auto flex items-center justify-center lg:first-letter: lg:my-24 lg:py-0 lg:max-w-[80%]">
         <section className="container mx-auto">
           <Tabs defaultValue="experience" className="flex flex-col lg:flex-row gap-[60px]">
             <TabsList className='flex flex-col w-full lg:max-w-[280px] mx-auto lg:mx-0 gap-6'>
@@ -281,8 +284,8 @@ const Home = () => {
             </article>
           </Tabs>
         </section>
-      </section>
-      <section id='projects' className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:py-0'>
+      </motion.section>
+      <motion.section {...ANIMATIONS.up} id='projects' className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:py-0'>
         <section className='container mx-auto'>
           <h2 className='lg:text-5xl text-4xl mb-16 font-extrabold text-center'>
             Projects
@@ -364,8 +367,8 @@ const Home = () => {
             </div>
           </div>
         </section>
-      </section>
-      <section id='services' className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:mb-24 lg:py-0'>
+      </motion.section>
+      <motion.section {...ANIMATIONS.up} id='services' className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:mb-24 lg:py-0'>
         <section className='container mx-auto'>
           <h2 className='lg:text-5xl text-4xl mb-24 font-extrabold text-center'>
             Services
@@ -394,14 +397,14 @@ const Home = () => {
             }
           </div>
         </section>
-      </section>
-      <section id='contact' className='lg:my-24 lg:max-w-[80%] mx-auto'>
+      </motion.section>
+      <motion.section {...ANIMATIONS.up} id='contact' className='lg:my-24 lg:max-w-[80%] mx-auto'>
         <section className='container mx-auto'>
           <h2 className='lg:text-5xl text-4xl mb-10 font-extrabold text-center'>
             Connect With Me
           </h2>
           <div className="flex flex-col lg:flex-row justify-center gap-14">
-            <div className="lg:w-[50%]">
+            <div className="lg:w-[45%]">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(submitContactForm)} className="flex flex-col gap-3 p-4 lg:p-6 dark:bg-[#27272c] bg-[whitesmoke] rounded-xl">
                   <h3 className="text-3xl text-accent pb-4">
@@ -522,7 +525,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-      </section>
+      </motion.section>
     </main>
   )
 }
