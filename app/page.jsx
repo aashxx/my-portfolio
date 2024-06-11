@@ -12,7 +12,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { BsArrowUpRight, BsGithub, BsArrowDownRight } from 'react-icons/bs';
 import Link from 'next/link';
-import Image from 'next/image';
 import WorkSliderButtons from '@/components/WorkSliderButtons';
 import { SERVICES } from '@/lib/constants';
 import { Input } from "@/components/ui/input";
@@ -27,7 +26,6 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import CipherAnimation from '@/components/CipherAnimation';
 import { motion } from 'framer-motion';
-import SplashScreen from '@/components/SplashScreen';
 
 const Home = () => {
 
@@ -112,7 +110,7 @@ const Home = () => {
                 <CipherAnimation name={'Mohamed'} />
                 <CipherAnimation name={'Aashir'} />
               </div>
-              <span className='lg:text-xl text-[10px] text-[gray]'>
+              <span className='lg:text-xl text-[10px] dark:text-[gray] text-primary'>
                 Software Engineer | Student | Fullstack Developer
               </span>
               <p className='max-w-[500px] text-[12px] lg:text-sm mx-auto mb-9 text-[gray] dark:text-white/80'>
@@ -352,7 +350,7 @@ const Home = () => {
                     <SwiperSlide key={index} className='w-full'>
                       <div className='lg:h-[300px] h-[250px] relative group flex justify-center items-center rounded-md bg-pink-50/20'>
                         <div className='relative w-full h-full rounded-md border dark:border-none'>
-                          <Image src={project.image} fill className='object-cover rounded-md' alt='image' />
+                          <img src={project.image} className='object-contain rounded-md' alt='image' />
                         </div>
                       </div>
                     </SwiperSlide>
