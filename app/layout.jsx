@@ -19,6 +19,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+      </head>
       <body className={jetbrainsMono.className}>
         <ThemeProvider
           attribute="class"

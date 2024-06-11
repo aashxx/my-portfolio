@@ -27,6 +27,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '@/component
 import { BackgroundBeams } from '@/components/ui/background-beams';
 import CipherAnimation from '@/components/CipherAnimation';
 import { motion } from 'framer-motion';
+import SplashScreen from '@/components/SplashScreen';
 
 const Home = () => {
 

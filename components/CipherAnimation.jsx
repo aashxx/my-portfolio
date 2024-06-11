@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 
 const CipherAnimation = ({ name }) => {
 
-    const [displayText, setDisplayText] = useState(name); // Initial text
+    const [displayText, setDisplayText] = useState(name);
     const [active, setActive] = useState(false);
 
-    const solveMilliseconds = 800;
+    const solveMilliseconds = 1500;
     const characterSelectionMilliseconds = 40;
     const delayMilliseconds = 250;
     const characters = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890*#@/*!%&^"];
@@ -31,7 +31,7 @@ const CipherAnimation = ({ name }) => {
 
                 setTimeout(() => {
                     setActive(false);
-                    setDisplayText(name); // Reset to final text
+                    setDisplayText(name); 
                 }, lockMilliseconds);
 
                 elementCharacters.forEach((character, index) => {
