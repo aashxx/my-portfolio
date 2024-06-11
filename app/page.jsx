@@ -273,20 +273,25 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className='w-full relative lg:w-[50%]'>
+            <div className='w-full lg:w-[50%]'>
               <Swiper spaceBetween={30} slidesPerView={1} onSlideChange={handleSlideChange}>
                 {
                   PROJECTS.map((project, index) => (
                     <SwiperSlide key={index} className='w-full'>
-                      <div className='h-[360px] relative group flex justify-center items-center rounded-md bg-pink-50/20'>
-                        <div className='relative w-full h-full rounded-md'>
+                      <div className='lg:h-[300px] h-[250px] relative group flex justify-center items-center rounded-md bg-pink-50/20'>
+                        <div className='relative w-full h-full rounded-md border dark:border-none'>
                           <Image src={project.image} fill className='object-cover rounded-md' alt='image' />
                         </div>
                       </div>
                     </SwiperSlide>
                   ))
                 }
-                <WorkSliderButtons containerStyles={'flex gap-2 absolute right-8 bottom-[calc(50%_-_22px)] lg:bottom-10 z-50 w-full justify-between lg:w-max lg:justify-none'} btnStyles={'bg-accent rounded-md hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all'} />
+                <div className='flex justify-center mt-4'>
+                  <WorkSliderButtons
+                    containerStyles={'flex gap-2 md:justify-end justify-between w-full lg:static absolute bottom-[calc(50%_-_22px)] z-20'}
+                    btnStyles={'bg-accent rounded-md hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all'}
+                  />
+                </div>
               </Swiper>
             </div>
           </div>
@@ -327,9 +332,9 @@ const Home = () => {
           <h2 className='lg:text-5xl text-4xl mb-10 font-extrabold text-center'>
             Connect With Me
           </h2>
-          <div className="flex flex-col lg:flex-row gap-[10px]">
-            <div className="lg:w-[50%] order-2 lg:order-none">
-              <form className="flex flex-col gap-3 p-4 lg:p-6 bg-[#27272c] rounded-xl">
+          <div className="flex flex-col lg:flex-row justify-center gap-14">
+            <div className="lg:w-[50%]">
+              <form className="flex flex-col gap-3 p-4 lg:p-6 dark:bg-[#27272c] bg-[whitesmoke] rounded-xl">
                 <h3 className="text-3xl text-accent pb-4">
                   Let&apos;s work together
                 </h3>
@@ -369,18 +374,18 @@ const Home = () => {
                 </Button>
               </form>
             </div>
-            <div className="flex-1 flex items-center lg:justify-end order-1 lg:order-none mb-8 lg:mb-0">
+            <div className="flex items-center lg:justify-end mb-8 lg:mb-0">
               <ul className="flex flex-col gap-10">
                 {
                   CONTACT.map((item, index) => (
                     <li key={index} className="flex items-center gap-6">
-                      <div className="w-[52px] h-[52px] lg:w-[72px] lg:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                      <div className="w-[52px] h-[52px] lg:w-[72px] lg:h-[72px] dark:bg-[#27272c] bg-[whitesmoke] text-accent rounded-md flex items-center justify-center">
                         <div className="text-[28px]">
                           {item.icon}
                         </div>
                       </div>
                       <div className="flex-1">
-                        <p className="text-white/60">
+                        <p className="dark:text-white/60 text-[gray]">
                           {item.title}
                         </p>
                         <h3 className="text-xl">
