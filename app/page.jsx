@@ -20,6 +20,11 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { CONTACT } from '@/lib/constants';
+import { z } from 'zod';
+import { useToast } from '@/components/ui/use-toast';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 
 const Home = () => {
 
@@ -30,9 +35,69 @@ const Home = () => {
     setProject(PROJECTS[currentIndex]);
   }
 
+  const contactFormSchema = z.object({
+    name: z.string().min(2, {
+      message: "Name must be of atleast 2 characters.",
+    }),
+    email: z.string().describe('Email').email({ message: "Invalid Email" }),
+    phone: z.string().min(6, {
+      message: "Phone number must be of atleast 6 characters.",
+    }),
+    service: z.string().min(1, {
+      message: "Service is required",
+    }),
+    message: z.string().min(1, { 
+      message: "Message is required" 
+    }),
+  })
+
+  const { toast } = useToast();
+
+  const form = useForm({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      message: ""
+    }
+  });
+
+  const submitContactForm = async (values) => {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          service: values.service,
+          message: values.message
+      })
+    });
+
+    if(response.ok) {
+      toast({
+        title: "Success",
+        description: "Your message has been sent successfully!",
+      });
+      form.reset();
+      
+    } else {
+      toast({
+        title: "Error",
+        description: "Oops! Something went wrong.",
+        variant: "destructive"
+      });
+    }
+  }
+
   return (
     <main>
-      <section className='h-full'>
+      <section id='home' className='h-full'>
         <section className="container mx-auto h-full">
           <div className='flex flex-col-reverse lg:flex-row items-center justify-between lg:pt-8'>
             <article className='text-center w-full flex flex-col gap-4 items-center pt-4 lg:pt-[unset]'>
@@ -68,7 +133,7 @@ const Home = () => {
             <Stats />
         </section>
       </section>
-      <section className="mx-auto flex items-center justify-center lg:first-letter: lg:my-24 lg:py-0 lg:max-w-[80%]">
+      <section id='about' className="mx-auto flex items-center justify-center lg:first-letter: lg:my-24 lg:py-0 lg:max-w-[80%]">
         <section className="container mx-auto">
           <Tabs defaultValue="experience" className="flex flex-col lg:flex-row gap-[60px]">
             <TabsList className='flex flex-col w-full lg:max-w-[280px] mx-auto lg:mx-0 gap-6'>
@@ -214,7 +279,7 @@ const Home = () => {
           </Tabs>
         </section>
       </section>
-      <section className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:py-0'>
+      <section id='projects' className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:py-0'>
         <section className='container mx-auto'>
           <h2 className='lg:text-5xl text-4xl mb-16 font-extrabold text-center'>
             Projects
@@ -297,7 +362,7 @@ const Home = () => {
           </div>
         </section>
       </section>
-      <section className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:mb-24 lg:py-0'>
+      <section id='services' className='lg:max-w-[80%] mx-auto flex flex-col justify-center py-12 lg:mb-24 lg:py-0'>
         <section className='container mx-auto'>
           <h2 className='lg:text-5xl text-4xl mb-24 font-extrabold text-center'>
             Services
@@ -327,52 +392,108 @@ const Home = () => {
           </div>
         </section>
       </section>
-      <section className='lg:my-24 lg:max-w-[80%] mx-auto'>
+      <section id='contact' className='lg:my-24 lg:max-w-[80%] mx-auto'>
         <section className='container mx-auto'>
           <h2 className='lg:text-5xl text-4xl mb-10 font-extrabold text-center'>
             Connect With Me
           </h2>
           <div className="flex flex-col lg:flex-row justify-center gap-14">
             <div className="lg:w-[50%]">
-              <form className="flex flex-col gap-3 p-4 lg:p-6 dark:bg-[#27272c] bg-[whitesmoke] rounded-xl">
-                <h3 className="text-3xl text-accent pb-4">
-                  Let&apos;s work together
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  <Input type="firstname" placeholder="First Name" />
-                  <Input type="lastname" placeholder="Last Name" />
-                  <Input type="email" placeholder="Email address" />
-                  <Input type="phone" placeholder="Phone number" />
-                </div>
-                <Select>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select a service" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>
-                        Select a service
-                      </SelectLabel>
-                      <SelectItem value="webdev">
-                        Web Development
-                      </SelectItem>
-                      <SelectItem value="appdev">
-                        App Development
-                      </SelectItem>
-                      <SelectItem value="desktopdev">
-                        Desktop Development
-                      </SelectItem>
-                      <SelectItem value="seo">
-                        SEO
-                      </SelectItem>
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-                <Textarea className="h-[150px]" placeholder="Type your message here." />
-                <Button size='md' className="max-w-40 self-center mt-5">
-                  Send Message
-                </Button>
-              </form>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(submitContactForm)} className="flex flex-col gap-3 p-4 lg:p-6 dark:bg-[#27272c] bg-[whitesmoke] rounded-xl">
+                  <h3 className="text-3xl text-accent pb-4">
+                    Let&apos;s work together
+                  </h3>
+                  <FormField 
+                    control={form.control}
+                    name="name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input className='w-full' placeholder="Full Name" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <div className="flex flex-col lg:flex-row gap-2 w-full">
+                    <FormField 
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input className='w-[100%]' placeholder="Email address" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField 
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input className='w-[100%]' placeholder="Phone number" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+                  <FormField 
+                    control={form.control}
+                    name="service"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Select onValueChange={field.onChange} defaultValue={...field.value}>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder="Select a service" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectGroup>
+                                <SelectLabel>
+                                  Select a service
+                                </SelectLabel>
+                                <SelectItem value="Web Development">
+                                  Web Development
+                                </SelectItem>
+                                <SelectItem value="App Development">
+                                  App Development
+                                </SelectItem>
+                                <SelectItem value="Desktop Development">
+                                  Desktop Development
+                                </SelectItem>
+                                <SelectItem value="SEO">
+                                  SEO
+                                </SelectItem>
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField 
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Textarea className="h-[150px]" placeholder="Type your message here." {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button size='md' className="max-w-40 self-center mt-5">
+                    Send Message
+                  </Button>
+                </form>
+              </Form>
             </div>
             <div className="flex items-center lg:justify-end mb-8 lg:mb-0">
               <ul className="flex flex-col gap-10">

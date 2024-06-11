@@ -2,6 +2,7 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ["latin"], 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         >
           <Navbar />
             {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
