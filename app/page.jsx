@@ -117,7 +117,7 @@ const Home = () => {
                 Developer with a strong passion for creating innovative and user-friendly applications. Actively seeking opportunities to apply my skills in a professional setting.
               </p>
               <div className='flex flex-col items-center gap-8 w-full'>
-                <a href="https://drive.google.com/uc?export=download&id=1aKTMKKUu9dFFjT6Mfxub2pJAKXMc5XxZ" download="aashir-cv.pdf" className="relative z-50 inline-flex items-center justify-center px-10 py-3 overflow-hidden font-bold rounded-full group border border-accent bg-transparent text-accent dark:hover:text-primary hover:text-white">
+                <a href="https://drive.google.com/uc?export=download&id=1wwaoSVGmWPzAtxlsHTR6O9tnJvGn47n0" download="aashir-cv.pdf" className="relative z-50 inline-flex items-center justify-center px-10 py-3 overflow-hidden font-bold rounded-full group border border-accent bg-transparent text-accent dark:hover:text-primary hover:text-white">
                   <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-accent rounded-full group-hover:w-56 group-hover:h-56"></span>
                   <span className="relative uppercase flex items-center gap-2">
                     <span>
