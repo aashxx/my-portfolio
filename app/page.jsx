@@ -111,13 +111,13 @@ const Home = () => {
                 <CipherAnimation name={'Aashir'} />
               </div>
               <span className='lg:text-xl text-[10px] dark:text-[gray] text-primary'>
-                Software Engineer | Student | Fullstack Developer
+                Solutions Consultant | Engineer | Software Developer
               </span>
               <p className='max-w-[500px] text-[12px] lg:text-sm mx-auto mb-9 text-[gray] dark:text-white/80'>
-                Developer with a strong passion for creating innovative and user-friendly applications. Actively seeking opportunities to apply my skills in a professional setting.
+                Developer with a strong passion for creating innovative and user-friendly applications. Currently working as a solutions consultant @ Kissflow.
               </p>
               <div className='flex flex-col items-center gap-8 w-full'>
-                <a href="https://drive.google.com/uc?export=download&id=1wwaoSVGmWPzAtxlsHTR6O9tnJvGn47n0" download="aashir-cv.pdf" className="relative z-50 inline-flex items-center justify-center px-10 py-3 overflow-hidden font-bold rounded-full group border border-accent bg-transparent text-accent dark:hover:text-primary hover:text-white">
+                <a href="https://drive.google.com/uc?export=download&id=11yvcGE5E4GMUY70ykq2YWuUmEEkg2NXJ" download="aashir-cv.pdf" className="relative z-50 inline-flex items-center justify-center px-10 py-3 overflow-hidden font-bold rounded-full group border border-accent bg-transparent text-accent dark:hover:text-primary hover:text-white">
                   <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-accent rounded-full group-hover:w-56 group-hover:h-56"></span>
                   <span className="relative uppercase flex items-center gap-2">
                     <span>
@@ -470,8 +470,8 @@ const Home = () => {
                                 <SelectItem value="Desktop Development">
                                   Desktop Development
                                 </SelectItem>
-                                <SelectItem value="SEO">
-                                  SEO
+                                <SelectItem value="No Code Development">
+                                  No Code Development
                                 </SelectItem>
                               </SelectGroup>
                             </SelectContent>

@@ -8,11 +8,11 @@ const socials = [
     },
     {
         icon: <FaLinkedin />,
-        path: "https://www.linkedin.com/in/aashxx/"
+        path: "https://www.linkedin.com/in/aashxx"
     },
     {
         icon: <FaInstagram />,
-        path: "https://www.instagram.com/webcohort/"
+        path: "https://www.instagram.com/mohamed_aashir"
     },
     {
         icon: <FaTwitter />,
